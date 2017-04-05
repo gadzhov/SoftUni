@@ -1,0 +1,53 @@
+.header {
+    background: #565656;
+    text-align: center;
+    padding: 10px;
+}
+.header a {
+    text-decoration: none;
+    font-size: 28px;
+    padding: 10px;
+    color: #AAAAAA;
+}
+.hello-user {
+    color: #AAAAAA;
+    float: right;
+    font-size: 28px;
+}
+.header a:hover {
+    background-color: #f19400;
+}
+.footer {
+    background: #565656;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: #AAAAAA;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.register-form {
+
+}
+.input-form {
+    display: block;
+    padding: 5px;
+    position: relative;
+    outline: none;
+}
+.loading-box {
+    background: lawngreen;
+    text-align: center;
+    padding: 20px;
+}
+.success-box {
+    background: lawngreen;
+    text-align: center;
+    padding: 20px;
+}
+.error-box {
+    background: red;
+    text-align: center;
+    padding: 20px;
+}

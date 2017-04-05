@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <script src="../../jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="Blog-Styles.css">
+    <script src="Blog.js"></script>
+</head>
+<body onload="blog()">
+<header class="header">
+    <a href="#" id="home-link">Home</a>
+    <a href="#" id="login-link">Login</a>
+    <a href="#" id="register-link">Register</a>
+    <a href="#" id="posts-link">Posts</a>
+    <a href="#" id="logout-link">logout</a>
+    <span class="hello-user" id="hello-user"></span>
+</header>
+
+<main>
+<div class="loading-box" id="loading-box" style="display: none">Loading...</div>
+<div class="success-box" id="success-box" style="display: none">Success</div>
+<div class="error-box" id="error-box" style="display: none">Error</div>
+
+<form class="login-form" style="display: none">
+    <label for="username-login">Username</label>
+    <input type="text" class="input-form" id="username-login" required>
+    <label for="password-login">Password</label>
+    <input type="password" class="input-form" id="password-login" required>
+    <input type="submit" class="submit-login" value="Submit">
+</form>
+
+<form class="register-form" style="display: none">
+    <label for="username-register">Username</label>
+    <input type="text" class="input-form" id="username-register" required>
+    <label for="password-register">Password</label>
+    <input type="password" class="input-form" id="password-register" required>
+    <label for="password-confirm-register">Confirm Password</label>
+    <input type="password"class="input-form" id="password-confirm-register" required>
+    <input type="submit" class="submit-register" value="Submit">
+</form>
+
+<div class="container" id="container">
+    <table id="posts-table" class="posts-table">
+        <tr>Title</tr>
+        <td></td>
+        <tr>Body</tr>
+        <td></td>
+    </table>
+</div>
+</main>
+
+<footer class="footer">Blog</footer>
+</body>
+</html>
