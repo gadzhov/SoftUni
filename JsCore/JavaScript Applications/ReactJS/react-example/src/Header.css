@@ -1,0 +1,11 @@
+.header {
+    background: #EEE;
+}
+.header a {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+}
+.header a:hover {
+    background-color: #fff;
+}
