@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lection", "Lection\Lection.csproj", "{BFD196B6-9721-4730-BD9A-8C0A7B6FA3AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Local Store", "Local Store\Local Store.csproj", "{9F3ECB53-4EBD-444B-8AF8-B03AD88DB289}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales", "Sales\Sales.csproj", "{C28EEA05-F87A-4A2B-9110-4E00DCF291E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFD196B6-9721-4730-BD9A-8C0A7B6FA3AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD196B6-9721-4730-BD9A-8C0A7B6FA3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD196B6-9721-4730-BD9A-8C0A7B6FA3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD196B6-9721-4730-BD9A-8C0A7B6FA3AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3ECB53-4EBD-444B-8AF8-B03AD88DB289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3ECB53-4EBD-444B-8AF8-B03AD88DB289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3ECB53-4EBD-444B-8AF8-B03AD88DB289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3ECB53-4EBD-444B-8AF8-B03AD88DB289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28EEA05-F87A-4A2B-9110-4E00DCF291E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28EEA05-F87A-4A2B-9110-4E00DCF291E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28EEA05-F87A-4A2B-9110-4E00DCF291E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28EEA05-F87A-4A2B-9110-4E00DCF291E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
