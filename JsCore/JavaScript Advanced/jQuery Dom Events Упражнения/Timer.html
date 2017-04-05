@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            crossorigin="anonymous"></script>
+    <style>
+        #timer {
+            font-size: 5em;
+        }
+    </style>
+</head>
+<body>
+<div id="timer">
+    <span id="hours" class="timer">00</span>:
+    <span id="minutes" class="timer">00</span>:
+    <span id="seconds" class="timer">00</span>
+    <button id="start-timer">Start</button>
+    <button id="stop-timer">Stop</button>
+</div>
+<script>
+    window.onload=function(){
+        timer();
+    }
+</script>
+<script>
+    function timer() {
+        let time, intervalID;
+        let startBtn = $("#start-timer");
+        let stopBtn = $("#stop-timer");
+        let isPaused = false;
+        startBtn.click(function () {
+            if (isPaused == false) {
+                time = -1;
+            }
+            else {
+                time -= 1;
+            }
+            incrementTime();
+            intervalID = setInterval(incrementTime, 1000);
+            startBtn.attr('disabled', true);
+            stopBtn.attr('disabled', false);
+        });
+        stopBtn.on('click', function () {
+            clearInterval(intervalID);
+            isPaused = true;
+            startBtn.attr('disabled', false);
+            stopBtn.attr('disabled', true);
+        });
+        function incrementTime() {
+            time++;
+            $("#seconds").text(('0' + (time % 60)).slice(-2));
+            $("#minutes").text(('0' + Math.trunc(time / 60) % 60).slice(-2));
+            $("#hours").text(('0' + Math.floor(time / 3600) % 24).slice(-2))
+        }
+    }
+</script>
+</body>
+</html>
