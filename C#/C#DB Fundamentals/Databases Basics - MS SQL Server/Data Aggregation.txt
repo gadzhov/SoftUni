@@ -1,0 +1,271 @@
+Exercises: Data Aggregation
+This document defines the exercise assignments for the "Databases Basics - MSSQL" course @ Software University. 
+Mr. Bodrog is a greedy small goblin who is in charge of Gringotts – the biggest wizard bank. His most precious possession is a small database of the deposits in the wizard’s world. Taking money is his hobby. He wants your money as well but unfortunately you are not a wizard. The only magic you know is how to work with databases. That’s how you got access to the precious data. Mr. Bodrog wants you to send him some reports otherwise he will send a pack of hungry werewolves after you. You don’t want to confront pack of hungry werewolves, do you?
+Before going on the next task make sure to download the Gringotts database.
+Problem 1.	Records’ Count
+Import the database and send the total count of records to Mr. Bodrog. Make sure nothing got lost.
+SELECT COUNT(Id) FROM WizzardDeposits
+Example:
+Count
+162
+Problem 2.	Longest Magic Wand
+Select the size of the longest magic wand. Rename the new column appropriately.
+SELECT MAX(MagicWandSize) AS 'LongestMagicWand' FROM WizzardDeposits
+Example:
+LongestMagicWand
+31
+Problem 3.	Longest Magic Wand per Deposit Groups
+For wizards in each deposit group show the longest magic wand. Rename the new column appropriately.
+SELECT DepositGroup, MAX(MagicWandSize) AS [LongestMagicWand] FROM WizzardDeposits
+GROUP BY DepositGroup
+Example:
+DepositGroup	LongestMagicWand
+Human Pride	30
+…	…
+Problem 4.	* Smallest Deposit Group per Magic Wand Size
+Select the deposit group with the lowest average wand size.
+SELECT DepositGroup FROM WizzardDeposits
+GROUP BY DepositGroup
+HAVING AVG(MagicWandSize) < 
+(
+SELECT AVG(MagicWandSize) FROM WizzardDeposits
+)
+Example:
+DepositGroup
+Troll Chest
+Venomous Tongue
+
+Problem 5.	Deposits Sum
+Select all deposit groups and its total deposit sum.
+SELECT DepositGroup, SUM(DepositAmount) AS [TotalSum]
+FROM WizzardDeposits
+GROUP BY DepositGroup
+Example:
+DepositGroup	TotalSum
+Human Pride	1041291.52
+…	…
+Problem 6.	Deposits Sum for Ollivander Family
+Select all deposit groups and its total deposit sum but only for the wizards who has their magic wand crafted by Ollivander family.
+SELECT DepositGroup, SUM(DepositAmount) AS [TotalSum] 
+FROM WizzardDeposits
+WHERE MagicWandCreator = 'Ollivander family'
+GROUP BY DepositGroup
+Example:
+DepositGroup	TotalSum
+Human Pride	188366.86
+…	…
+Problem 7.	Deposits Filter
+Select all deposit groups and its total deposit sum but only for the wizards who has their magic wand crafted by Ollivander family. After this filter total deposit amounts lower than 150000. Order by total deposit amount in descending order.
+SELECT DepositGroup, SUM(DepositAmount) AS [TotalSum] 
+FROM WizzardDeposits
+WHERE MagicWandCreator = 'Ollivander family'
+GROUP BY DepositGroup
+HAVING SUM(DepositAmount) < 150000
+ORDER BY TotalSum DESC
+Example:
+DepositGroup	TotalSum
+Troll Chest	126585.18
+…	…
+Problem 8.	 Deposit Charge
+Create a query that selects:
+•	Deposit group 
+•	Magic wand creator
+•	Minimum deposit charge for each group 
+Select the data in ascending order by MagicWandCreator and DepositGroup.
+SELECT DepositGroup, MagicWandCreator, MIN(DepositCharge) AS [MinDepositCharge]
+FROM WizzardDeposits
+GROUP BY DepositGroup, MagicWandCreator
+ORDER BY MagicWandCreator, DepositGroup
+
+
+Example:
+DepositGroup	MagicWandCreator	MinDepositCharge
+Blue Phoenix	Antioch Peverell	30.00
+…	…	
+Problem 9.	Age Groups
+Write down a query that creates 7 different groups based on their age.
+Age groups should be as follows:
+•	[0-10]
+•	[11-20]
+•	[21-30]
+•	[31-40]
+•	[41-50]
+•	[51-60]
+•	[61+]
+The query should return
+•	Age groups
+•	Count of wizards in it
+
+SELECT 
+	CASE
+		WHEN Age BETWEEN 0 AND 10 THEN '[0-10]'
+		WHEN Age BETWEEN 11 AND 20 THEN '[11-20]'
+		WHEN Age BETWEEN 21 AND 30 THEN '[21-30]'
+		WHEN Age BETWEEN 31 AND 40 THEN '[31-40]'
+		WHEN Age BETWEEN 41 AND 50 THEN '[41-50]'
+		WHEN Age BETWEEN 51 AND 60 THEN '[51-60]'
+		ELSE '[61+]'
+	END AS [AgeGroup],COUNT(Id) AS [WizardCount]
+ FROM WizzardDeposits
+ GROUP BY CASE
+		WHEN Age BETWEEN 0 AND 10 THEN '[0-10]'
+		WHEN Age BETWEEN 11 AND 20 THEN '[11-20]'
+		WHEN Age BETWEEN 21 AND 30 THEN '[21-30]'
+		WHEN Age BETWEEN 31 AND 40 THEN '[31-40]'
+		WHEN Age BETWEEN 41 AND 50 THEN '[41-50]'
+		WHEN Age BETWEEN 51 AND 60 THEN '[51-60]'
+		ELSE '[61+]'
+	END
+Example:
+AgeGroup	WizardCount
+[11-20]	21
+…	…
+Problem 10.	First Letter
+Write a query that returns all unique wizard first letters of their first names only if they have deposit of type Troll Chest. Order them alphabetically. Use GROUP BY for uniqueness.
+SELECT LEFT(FirstName,1) AS 'FirstLetter' FROM WizzardDeposits
+WHERE DepositGroup = 'Troll Chest'
+GROUP BY LEFT(FirstName,1)
+ORDER BY FirstLetter
+Example:
+FirstLetter
+A
+…
+Problem 11.	Average Interest 
+Mr. Bodrog is highly interested in profitability. He wants to know the average interest of all deposits groups split by whether the deposit has expired or not. But that’s not all. He wants you to select deposits with start date after 01/01/1985. Order the data descending by Deposit Group and ascending by Expiration Flag.
+The output should consist of the following columns:
+SELECT DepositGroup, IsDepositExpired, AVG(DepositInterest) AS AverageInterest
+FROM WizzardDeposits
+WHERE DepositStartDate > '1985-01-01'
+GROUP BY DepositGroup, IsDepositExpired
+ORDER BY DepositGroup DESC, IsDepositExpired
+Example:
+DepositGroup	IsDepositExpired	AverageInterest
+Venomous Tongue	0	16.698947
+…	…	
+Problem 12.	* Rich Wizard, Poor Wizard
+Mr. Bodrog definitely likes his werewolves more than you. This is your last chance to survive! Give him some data to play his favorite game Rich Wizard, Poor Wizard. The rules are simple: You compare the deposits of every wizard with the wizard after him. If a wizard is the last one in the database, simply ignore it. In the end you have to sum the difference between the deposits.
+Host Wizard	Host Wizard Deposit	Guest Wizard	Guest Wizard Deposit	Difference
+Harry	10 000	Tom	12 000	-2000
+Tom	12 000	…	…	…
+At the end your query should return a single value: the SUM of all differences.
+SELECT SUM(s.SumDifference)
+FROM
+	(SELECT h.DepositAmount - (SELECT DepositAmount FROM WizzardDeposits
+	WHERE Id = h.Id + 1
+	) AS SumDifference
+FROM WizzardDeposits AS h) AS s
+Example:
+SumDifference
+44393.97
+Problem 13.	Departments Total Salaries
+That’s it! You no longer work for Mr. Bodrog. You have decided to find a proper job as an analyst in SoftUni. 
+It’s not a surprise that you will use the SoftUni database. Things get more exciting here!
+Create a query which shows the total sum of salaries for each department. Order by DepartmentID.
+Your query should return:	
+•	DepartmentID
+
+SELECT DepartmentID, SUM(Salary) AS [TotalSalary] FROM Employees
+GROUP BY DepartmentID
+ORDER BY DepartmentID
+
+Example:
+DepartmentID	TotalSalary
+1	241000.00
+…	…
+Problem 14.	Employees Minimum Salaries
+Select the minimum salary from the employees for departments with ID (2,5,7) but only for those who are hired after 01/01/2000.
+Your query should return:	
+•	DepartmentID
+
+SELECT DepartmentID, MIN(Salary) AS [TotalSalary] FROM Employees
+WHERE HireDate > '2000-01-01'
+GROUP BY DepartmentID
+HAVING DepartmentID IN (2,5,7)
+
+Example: 
+DepartmentID	MinimumSalary
+2	2500.00
+…	…
+Problem 15.	Employees Average Salaries
+Select all employees who earn more than 30000 into a new table. Then delete all employees who has ManagerID = 42 (in the new table); Then increase the salaries of all employees with DepartmentID=1 with 5000. Finally, select the average salaries in each department.
+SELECT * INTO NewTable FROM Employees 
+WHERE Salary > 30000
+
+DELETE FROM NewTable
+WHERE ManagerId = 42
+
+UPDATE NewTable
+SET Salary += 5000
+WHERE DepartmentId = 1
+
+SELECT DepartmentId, AVG(Salary) AS AverageSalary
+FROM NewTable
+GROUP BY DepartmentID
+Example:
+DepartmentID	AverageSalary
+1	45166.6666
+…	…
+Problem 16.	Employees Maximum Salaries
+Find the max salary for each department. Filter those which have max salaries not in the range 30000 and 70000;
+SELECT DepartmentID, MAX(Salary) AS MaxSalary
+FROM Employees
+GROUP BY DepartmentID
+HAVING MAX(Salary) NOT BETWEEN 30000 AND 70000
+Example:
+DepartmentID	MaxSalary
+2	29800.00
+…	…
+Problem 17.	Employees Count Salaries
+Count the salaries of all employees who don’t have a manager.
+SELECT COUNT(EmployeeID) AS Count
+FROM Employees
+WHERE ManagerID IS NULL
+
+Example:
+Count
+4
+…
+Problem 18.	*3rd Highest Salary
+Find the third highest salary in each department if there is such. 
+SELECT DepartmentID, 
+(SELECT DISTINCT Salary FROM Employees 
+WHERE DepartmentID = e.DepartmentID 
+ORDER BY Salary DESC OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY) AS ThirdHighestSalary
+FROM Employees e
+WHERE (SELECT DISTINCT Salary FROM Employees 
+WHERE DepartmentID = e.DepartmentID 
+ORDER BY Salary DESC OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY) IS NOT NULL
+GROUP BY DepartmentID
+Example:
+DepartmentID	ThirdHighestSalary
+2	25000.00
+…	…
+Problem 19.	**Salary Challenge
+Write a query that returns:
+•	FirstName
+•	LastName
+•	DepartmentID
+Select all employees who have salary higher than the average salary of their respective departments. Select only the first 10 rows. Order by DepartmentID.
+SELECT TOP 10
+e.FirstName, e.LastName, e.DepartmentID
+FROM
+Employees AS e,
+(
+SELECT
+eInner.DepartmentID, AVG(eInner.Salary) AS AverageSalary
+FROM
+Employees AS eInner
+GROUP BY
+eInner.DepartmentID
+) AS avgSalary
+
+WHERE
+e.Salary > avgSalary.AverageSalary
+AND
+e.DepartmentID = avgSalary.DepartmentID
+Example:
+FirstName	LastName	DepartmentID
+Roberto	Tamburello	1
+…	…	
+
+

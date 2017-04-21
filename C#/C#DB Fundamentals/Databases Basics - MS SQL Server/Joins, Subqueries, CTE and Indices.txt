@@ -1,0 +1,297 @@
+Exercises: Joins, Subqueries, CTE and Indices
+This document defines the exercise assignments for the "Databases Basics - MSSQL" course @ Software University. For problems from 1 to 11 (inclusively) use "SoftUni" database and for the other problems – "Geography".
+Problem 1.	Employee Address
+Write a query that selects:
+•	EmployeeId
+•	JobTitle
+•	AddressId
+•	AddressText
+Return the first 5 rows sorted by AddressId in ascending order.
+SELECT top 5 EmployeeID,JobTitle,e.AddressID, a.AddressText 
+	FROM Employees AS e
+	INNER JOIN Addresses AS a
+	ON e.AddressID = a.AddressID
+	ORDER BY AddressID
+Example:
+EmployeeId	JobTitle	AddressId	AddressText
+142	Production Technician	1	108 Lakeside Court
+…	…	…	…
+Problem 2.	Addresses with Towns
+Write a query that selects:
+•	FirstName
+•	LastName
+•	Town
+•	AddressText
+Sorted by FirstName in ascending order then by LastName. Select first 50 employees.
+SELECT top 50 FirstName, LastName,t.Name, a.AddressText
+	FROM Employees AS e
+	INNER JOIN Addresses AS a
+	ON e.AddressID = a.AddressID
+	INNER JOIN Towns as t
+	ON a.TownID = t.TownID
+	ORDER BY FirstName, LastName
+Example:
+FirstName	LastName	Town	AddressText
+A.Scott	Wright	Newport Hills	1400 Gate Drive
+…	…	…	…
+Problem 3.	Sales Employee
+Write a query that selects:
+•	EmployeeID
+•	FirstName
+•	LastName
+•	DepartmentName
+Sorted by EmployeeID in ascending order. Select only employees from “Sales” department.
+SELECT e.EmployeeID, e.FirstName, e.LastName, d.Name 
+	FROM Employees AS e
+	INNER JOIN Departments AS d
+	ON e.DepartmentID = d.DepartmentID
+WHERE d.Name = 'Sales'
+ORDER BY e.EmployeeID
+Example:
+EmployeeID	FirstName	LastName	DepartmentName
+268	Stephen	Jiang	Sales
+…	…	…	…
+Problem 4.	Employee Departments
+Write a query that selects:
+•	EmployeeID
+•	FirstName
+•	Salary
+•	DepartmentName
+Filter only employees with salary higher than 15000. Return the first 5 rows sorted by DepartmentID in ascending order.
+SELECT TOP 5 EmployeeID, FirstName, Salary, d.Name 
+	FROM Employees AS e
+	INNER JOIN Departments AS d
+	ON e.DepartmentID = d.DepartmentID
+WHERE Salary > 15000
+ORDER BY e.DepartmentID
+
+Example:
+EmployeeID	FirstName	Salary	DepartmentName
+3     	Roberto                                            	43300.00	Engineering
+…	…	…	…
+Problem 5.	Employees Without Project
+Write a query that selects:
+•	EmployeeID
+•	FirstName
+Filter only employees without a project. Return the first 3 rows sorted by EmployeeID in ascending order.
+SELECT TOP 3 e.EmployeeID, e.FirstName
+FROM Employees AS e
+LEFT OUTER JOIN EmployeesProjects AS ep
+ON e.EmployeeID = ep.EmployeeID
+WHERE ep.EmployeeID is NULL
+ORDER BY EmployeeID
+Example:
+EmployeeID	FirstName
+2	Kevin
+…	…
+Problem 6.	Employees Hired After
+Write a query that selects:
+•	FirstName
+•	LastName
+•	HireDate
+•	DeptName
+Filter only employees with hired after 1/1/1999 and are from either "Sales" or "Finance" departments. 
+SELECT e.FirstName, e.LastName, e.HireDate, d.Name FROM Employees AS e
+INNER JOIN Departments AS d
+ON e.DepartmentID = d.DepartmentID
+WHERE e.HireDate > '1999-1-1' AND d.Name IN ('Sales', 'Finance')
+Example:
+FirstName	LastName	HireDate	DeptName
+Debora     	Poe	2001-01-19 00:00:00	Finance
+…	…	…	…
+
+Problem 7.	Employees with Project
+Write a query that selects:
+•	EmployeeID
+•	FirstName
+•	ProjectName
+Filter only employees with a project which has started after 13.08.2002 and it is still ongoing (no end date). Return the first 5 rows sorted by EmployeeID in ascending order.
+SELECT TOP 5 e.EmployeeID,e.FirstName,p.Name FROM Employees AS e
+INNER JOIN EmployeesProjects AS ep
+ON e.EmployeeID = ep.EmployeeID
+INNER JOIN Projects AS p
+ON ep.ProjectID = p.ProjectID
+WHERE p.StartDate > '2002-08-13' AND p.EndDate IS NULL
+ORDER BY e.EmployeeID
+Example
+EmployeeID	FirstName	ProjectName
+1	Guy	Racing Socks
+…	…	…
+Problem 8.	Employee 24
+Write a query that selects:
+•	EmployeeID
+•	FirstName
+•	ProjectName
+Filter all the projects of employee with id 24. If the project has started after 2005 the return value should be NULL.
+SELECT e.EmployeeID,e.FirstName, 
+	CASE 
+		WHEN p.StartDate > '2005' THEN NULL
+		ELSE p.Name
+	END AS ProjectName
+FROM Employees AS e
+INNER JOIN EmployeesProjects AS ep
+ON e.EmployeeID = ep.EmployeeID
+INNER JOIN Projects AS p
+ON ep.ProjectID = p.ProjectID
+WHERE e.EmployeeID = 24
+
+
+SELECT e.EmployeeID,e.FirstName,p.Name
+FROM Employees AS e
+INNER JOIN EmployeesProjects AS ep
+ON e.EmployeeID = ep.EmployeeID
+LEFT JOIN Projects AS p
+ON ep.ProjectID = p.ProjectID AND p.StartDate < '2005'
+WHERE e.EmployeeID = 24
+Example
+EmployeeID	FirstName	ProjectName
+24	David	NULL
+24	David	Road-650
+…	…	…
+Problem 9.	Employee Manager
+Write a query that selects:
+•	EmployeeID
+•	FirstName
+•	MangerID
+•	ManagerName
+Filter all employees with a manager who has ID equals to 3 or 7. Return the all rows sorted by EmployeeID in ascending order.
+SELECT e.EmployeeID,e.FirstName,e.ManagerID, e2.FirstName AS ManagerName FROM Employees AS e
+INNER JOIN Employees e2
+ON e.ManagerID = e2.EmployeeID
+WHERE e.ManagerID IN (3,7)
+ORDER BY e.EmployeeID	
+Example
+EmployeeID	FirstName	ManagerID	ManagerName
+4	Rob	3	Roberto
+…	…	…	…
+Problem 10.	Employee Summary
+Write a query that selects:
+•	EmployeeID
+•	EmployeeName
+•	ManagerName
+•	DepartmentName
+Show first 50 employees with their managers and the departments which they are in (show the departments of the employees, not mangers ones). Order by EmployeeID.
+SELECT TOP 50 e.EmployeeID,CONCAT(e.FirstName,' ',e.LastName) AS EmployeeName,CONCAT(m.FirstName,' ',m.LastName) AS ManagerName, d.Name AS DepartmentName FROM Employees AS e
+INNER JOIN Employees as m
+ON e.ManagerID = m.EmployeeID
+JOIN Departments AS d
+ON e.DepartmentID = d.DepartmentID
+ORDER BY e.EmployeeID
+Example
+EmployeeID	EmployeeName	ManagerName	DepartmentName
+1	Guy Gilbert	Jo Brown	Production
+…	…	…	…
+
+Problem 11.	Min Average Salary
+Write a query that return the value of the lowest average salary of all departments.
+Example:
+MinAverageSalary
+10866.6666
+Problem 12.	Highest Peak in Bulgaria
+Write a query that selects:
+•	CountryCode
+•	MountainRange
+•	PeakName
+•	Elevation
+Filter all peaks in Bulgaria with elevation over 2835. Return the all rows sorted by elevation in descending order.
+SELECT c.CountryCode, m.MountainRange, p.PeakName, p.Elevation FROM Countries AS c
+INNER JOIN MountainsCountries AS mc
+ON c.CountryCode = mc.CountryCode
+INNER JOIN Mountains AS m
+ON mc.MountainId = m.Id
+INNER JOIN Peaks AS p
+ON m.Id = p.MountainId
+WHERE c.CountryCode = 'BG' AND p.Elevation > 2835
+ORDER BY p.Elevation DESC	
+Example
+CountryCode	MountainRange	PeakName	Elevation
+BG	Rila	Musala	2925
+…	…	…	…
+Problem 13.	Count Mountain Ranges
+Write a query that selects:
+•	CountryCode
+•	MountainRanges
+Filter the count of the mountain ranges in the USA, Russia and Bulgaria.
+SELECT c.CountryCode, COUNT(m.MountainRange) AS MountainRanges FROM Countries AS c
+INNER JOIN MountainsCountries AS mc
+ON c.CountryCode = mc.CountryCode AND c.CountryName IN ('United States','Russia','Bulgaria')
+INNER JOIN Mountains as m
+ON mc.MountainId = m.Id
+GROUP BY c.CountryCode
+Example
+CountryCode	MountainRanges
+BG	6
+…	…
+Problem 14.	Countries with rivers
+Write a query that selects:
+•	CountryName
+•	RiverName
+Find the first 5 countries with or without rivers in Africa. Sort them by CountryName in ascending order.
+SELECT TOP 5 c.CountryName, r.RiverName FROM Countries AS c
+LEFT JOIN CountriesRivers AS cr
+ON c.CountryCode = cr.CountryCode
+LEFT JOIN Rivers AS r
+ON cr.RiverId = r.Id 
+WHERE c.ContinentCode = 'AF'
+ORDER BY c.CountryName	
+Example
+CountryName	RiverName
+Algeria	Niger
+Angola	Congo
+Benin	Niger
+Botswana	NULL
+Burkina Faso	Niger
+Problem 15.	*Continents and Currencies
+Write a query that selects:
+•	ContinentCode
+•	CurrencyCode
+•	CurrencyUsage
+Find all continents and their most used currency. Filter any currency that is used in only one country. Sort your results by ContinentCode.
+SELECT ContinentCode, CurrencyCode, CurrencyUsage FROM
+(SELECT ContinentCode, CurrencyCode, CurrencyUsage, DENSE_RANK() OVER (PARTITION BY ContinentCode ORDER BY CurrencyUsage DESC) AS [Rank] FROM
+(SELECT ContinentCode, CurrencyCode, COUNT(CountryCode) AS CurrencyUsage FROM Countries
+GROUP BY ContinentCode, CurrencyCode
+HAVING COUNT(CountryCode) > 1) AS cudata) as rankedcudata
+WHERE [Rank] = 1	
+Example
+ContinentCode	CurrencyCode	CurrencyUsage
+AF	XOF	8
+AS	AUD	2
+AS	ILS	2
+EU	EUR	26
+NA	XCD	8
+OC	USD	8
+Problem 16.	Countries Without any Mountains
+Write a query that selects CountryCode. Find all the count of all countries which don’t have a mountain.
+SELECT COUNT(*) AS CountryCode FROM Countries AS c
+LEFT OUTER JOIN MountainsCountries AS mc
+ON mc.CountryCode = c.CountryCode
+WHERE mc.CountryCode IS NULL
+Example
+CountryCode
+231
+Problem 17.	Highest Peak and Longest River by Country
+For each country, find the elevation of the highest peak and the length of the longest river, sorted by the highest peak elevation (from highest to lowest), then by the longest river length (from longest to smallest), then by country name (alphabetically). Display NULL when no data is available in some of the columns. Submit for evaluation the result grid with headers. Limit only the first 5 rows.
+CountryName	HighestPeakElevation	LongestRiverLength
+China	8848	6300
+India	8848	3180
+Nepal	8848	2948
+Pakistan	8611	3180
+Argentina	6962	4880
+Chile	6962	NULL
+…	…	…
+Problem 18.	** Highest Peak Name and Elevation by Country
+For each country, find the name and elevation of the highest peak, along with its mountain. When no peaks are available in some country, display elevation 0, "(no highest peak)" as peak name and "(no mountain)" as mountain name. When multiple peaks in some country have the same elevation, display all of them. Sort the results by country name alphabetically, then by highest peak name alphabetically. Submit for evaluation the result grid with headers. Limit only the first 5 rows.
+Country	HighestPeakName	HighestPeakElevation	Mountain
+Afghanistan	(no highest peak)	0	(no mountain)
+…	…	…	…
+Argentina	Aconcagua	6962	Andes
+…	…	…	…
+Bulgaria	Musala	2925	Rila
+Burkina Faso	(no highest peak)	0	(no mountain)
+…	…	…	…
+United States	Mount McKinley	6194	Alaska Range
+…	…	…	…
+Zambia	(no highest peak)	0	(no mountain)
+Zimbabwe	(no highest peak)	0	(no mountain)
+
