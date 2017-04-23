@@ -1,0 +1,14 @@
+.custom-container{
+    background-color: #eee;
+    padding: 30px;
+    border-radius: 10px;
+}
+.btn-custome{
+    min-width: 190px;
+    min-height: 70px;
+    font-size: 24pt;
+}
+.form-custome{
+    min-height: 70px;
+    font-size: 24pt;
+}
