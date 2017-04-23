@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Simple Maping", "01.Simple Maping\01.Simple Maping.csproj", "{6C48467B-3AB5-4F7F-B925-6C99066E8023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Advanced Mapping", "02.Advanced Mapping\02.Advanced Mapping.csproj", "{49A61371-DD74-46C9-B003-50780715CD29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projection", "Projection\Projection.csproj", "{3C55D251-E420-41A8-A9AD-AC880CF39031}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C48467B-3AB5-4F7F-B925-6C99066E8023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C48467B-3AB5-4F7F-B925-6C99066E8023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C48467B-3AB5-4F7F-B925-6C99066E8023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C48467B-3AB5-4F7F-B925-6C99066E8023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A61371-DD74-46C9-B003-50780715CD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A61371-DD74-46C9-B003-50780715CD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A61371-DD74-46C9-B003-50780715CD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A61371-DD74-46C9-B003-50780715CD29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C55D251-E420-41A8-A9AD-AC880CF39031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C55D251-E420-41A8-A9AD-AC880CF39031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C55D251-E420-41A8-A9AD-AC880CF39031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C55D251-E420-41A8-A9AD-AC880CF39031}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
