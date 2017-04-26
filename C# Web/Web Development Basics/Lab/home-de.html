@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 
 <head>
     <meta charset="UTF-8" />
@@ -31,17 +31,17 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="#">Home</a>
+                        <a href="#">Startseite</a>
                     </li>
                     <li>
-                        <a href="#">Call us</a>
+                        <a href="#">Rufen Sie uns an</a>
                     </li>
                 </ul>
                 <form method="POST">
-                    <input id="languageBtn" class="btn btn-primary navbar-btn" type="submit" formaction="Home.exe" name="language" value="EN"
+                    <input id="languageBtn" class="btn btn-primary navbar-btn" type="submit" formaction="Home.exe" name="language" value="DE"
                         onclick="change(this)">
-                        <a class="btn btn-success navbar-btn" href="signin.exe">Sign In</a>
-                        <a class="btn btn-warning navbar-btn" href="signup.exe">Sing Up</a>
+                        <a class="btn btn-success navbar-btn" href="signin.exe">Anmelden</a>
+                        <a class="btn btn-warning navbar-btn" href="signup.exe">Registrieren</a>
                         <a class="btn btn-info navbar-btn" href="menu.exe">Menu</a>
                 </form>
             </div>
@@ -51,7 +51,7 @@
     <script src="/pm/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function change(element) {
-            element.value = element.value == "EN" ? "DE" : "EN";
+            element.value = element.value == "DE" ? "EN" : "DE";
         }
     </script>
 </body>
