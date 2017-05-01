@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CarDealer.Models.Sale>
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>All</h2>
+
+<table class="table table-striped">
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Customer.Name</td>
+            <td>@s.Car.Make</td>
+        </tr>
+    }
+</table>

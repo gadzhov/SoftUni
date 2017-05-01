@@ -1,0 +1,16 @@
+﻿@model CarDealer.Models.Customer
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>About</h2>
+
+<div>
+    @Model.Name
+</div>
+<div>
+    @Model.Sales.Count
+</div>
+<div>
+    @Model.Sales.Sum(s => s.Car.Parts.Sum(p => p.Price))
+</div>

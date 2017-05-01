@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CarDealer.Models.Customer>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    @foreach (var c in Model)
+    {
+        <dl class="dl-horizontal">
+            <dd>
+               @c.Name
+            </dd>
+        
+            <dd>
+                @c.BirthDate
+            </dd>
+
+            <dd>
+                @c.IsYoungDriver
+            </dd>
+
+        </dl>
+    }
+</div>

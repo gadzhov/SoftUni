@@ -1,0 +1,24 @@
+﻿@model CarDealer.Models.Car
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>About</h2>
+
+<dl class="dl-horizontal">
+    <dd>@Model.Make</dd>
+    <dd>
+        @Model.Model
+    </dd>
+    <dd>
+        @Model.TravelledDistance
+    </dd>
+    <hr/>
+    @foreach (var p in @Model.Parts)
+    {
+        <dd>
+            @p.Name
+        </dd>
+            <dd>@p.Price</dd>
+    }
+</dl>
