@@ -8,6 +8,7 @@
 
 <div>
     <h4>Customer</h4>
+    <h5>@Html.ActionLink("Add", "Add", "Customers")</h5>
     <hr />
     @foreach (var c in Model)
     {
@@ -22,6 +23,9 @@
 
             <dd>
                 @c.IsYoungDriver
+            </dd>
+            <dd>
+                @Html.ActionLink("edit", "Edit", "Customers", new {id = c.Id}, null)
             </dd>
 
         </dl>

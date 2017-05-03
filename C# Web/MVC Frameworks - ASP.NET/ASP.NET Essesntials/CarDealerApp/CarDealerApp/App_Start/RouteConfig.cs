@@ -52,11 +52,11 @@ namespace CarDealerApp
                 defaults: new { controller = "Suppliers", action = "All" }
             );
 
-            routes.MapRoute(
-                name: "Cars from make",
-                url: "cars/{make}",
-                defaults: new { controller = "Cars", action = "All" }
-            );
+            //routes.MapRoute(
+            //    name: "Cars from make",
+            //    url: "cars/{make}",
+            //    defaults: new { controller = "Cars", action = "All" }
+            //);
 
             routes.MapRoute(
                 name: "Customers ordered",
