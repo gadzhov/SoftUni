@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 1 – Jedi Meditation", "Problem 1 – Jedi Meditation\Problem 1 – Jedi Meditation.csproj", "{179190D7-BFD9-42BA-ACF3-969E0320CD54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 2 – Jedi Galaxy", "Problem 2 – Jedi Galaxy\Problem 2 – Jedi Galaxy.csproj", "{3C6C1774-5B42-46AD-A4EB-FB59C2B462D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 3 – Jedi Code-X", "Problem 3 – Jedi Code-X\Problem 3 – Jedi Code-X.csproj", "{601F53A4-31B1-48BA-96FC-B02CA4B5F0EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 4 – Jedi Dreams", "Problem 4 – Jedi Dreams\Problem 4 – Jedi Dreams.csproj", "{5DA8D4E6-C2E7-4730-8904-9A4A7FC9EC15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{179190D7-BFD9-42BA-ACF3-969E0320CD54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179190D7-BFD9-42BA-ACF3-969E0320CD54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179190D7-BFD9-42BA-ACF3-969E0320CD54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179190D7-BFD9-42BA-ACF3-969E0320CD54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C6C1774-5B42-46AD-A4EB-FB59C2B462D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C6C1774-5B42-46AD-A4EB-FB59C2B462D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C6C1774-5B42-46AD-A4EB-FB59C2B462D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C6C1774-5B42-46AD-A4EB-FB59C2B462D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601F53A4-31B1-48BA-96FC-B02CA4B5F0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601F53A4-31B1-48BA-96FC-B02CA4B5F0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601F53A4-31B1-48BA-96FC-B02CA4B5F0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601F53A4-31B1-48BA-96FC-B02CA4B5F0EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA8D4E6-C2E7-4730-8904-9A4A7FC9EC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA8D4E6-C2E7-4730-8904-9A4A7FC9EC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA8D4E6-C2E7-4730-8904-9A4A7FC9EC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA8D4E6-C2E7-4730-8904-9A4A7FC9EC15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

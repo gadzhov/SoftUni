@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 1 – Arrange Integers", "Problem 1 – Arrange Integers\Problem 1 – Arrange Integers.csproj", "{90E2463A-FCA3-4E14-B707-B062EA024C24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 2 – Monopoly", "Problem 2 – Monopoly\Problem 2 – Monopoly.csproj", "{E1AA8885-E8F3-456F-A647-43A0A42C4276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 3 – Basic Mark-up Language", "Problem 3 – Basic Mark-up Language\Problem 3 – Basic Mark-up Language.csproj", "{75FD0B90-8D8F-4CC5-AE5B-075B2E2CC13F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problem 4 – Champion’s League", "Problem 4 – Champion’s League\Problem 4 – Champion’s League.csproj", "{F8F5BEE8-BEDB-45B0-8A96-0128BCE7EC71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90E2463A-FCA3-4E14-B707-B062EA024C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E2463A-FCA3-4E14-B707-B062EA024C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E2463A-FCA3-4E14-B707-B062EA024C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E2463A-FCA3-4E14-B707-B062EA024C24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1AA8885-E8F3-456F-A647-43A0A42C4276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1AA8885-E8F3-456F-A647-43A0A42C4276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1AA8885-E8F3-456F-A647-43A0A42C4276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1AA8885-E8F3-456F-A647-43A0A42C4276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75FD0B90-8D8F-4CC5-AE5B-075B2E2CC13F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75FD0B90-8D8F-4CC5-AE5B-075B2E2CC13F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FD0B90-8D8F-4CC5-AE5B-075B2E2CC13F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75FD0B90-8D8F-4CC5-AE5B-075B2E2CC13F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F5BEE8-BEDB-45B0-8A96-0128BCE7EC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F5BEE8-BEDB-45B0-8A96-0128BCE7EC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F5BEE8-BEDB-45B0-8A96-0128BCE7EC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F5BEE8-BEDB-45B0-8A96-0128BCE7EC71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
