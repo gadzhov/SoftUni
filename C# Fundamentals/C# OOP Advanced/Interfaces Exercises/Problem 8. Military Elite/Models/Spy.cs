@@ -5,7 +5,7 @@ namespace Problem_8.Military_Elite.Models
 {
     public class Spy : ISoldier, ISpy
     {
-        public Spy(int id, string firstName, string lastName, string codeNumber)
+        public Spy(int id, string firstName, string lastName, int codeNumber)
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -19,7 +19,7 @@ namespace Problem_8.Military_Elite.Models
 
         public string LastName { get; }
 
-        public string CodeNumber { get; }
+        public int CodeNumber { get; }
 
         public override string ToString()
         {

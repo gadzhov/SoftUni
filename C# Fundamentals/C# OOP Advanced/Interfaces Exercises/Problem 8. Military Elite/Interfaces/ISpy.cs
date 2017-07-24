@@ -2,6 +2,6 @@
 {
     public interface ISpy
     {
-        string CodeNumber { get; }
+        int CodeNumber { get; }
     }
 }

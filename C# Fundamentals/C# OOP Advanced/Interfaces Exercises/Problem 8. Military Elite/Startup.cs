@@ -105,7 +105,7 @@ namespace Problem_8.Military_Elite
                         id = int.Parse(cmdArgs[1]);
                         firstName = cmdArgs[2];
                         lastName = cmdArgs[3];
-                        var codeNumber = cmdArgs[4];
+                        var codeNumber = int.Parse(cmdArgs[4]);
 
                         var spy = new Spy(id, firstName, lastName, codeNumber);
                         Console.WriteLine(spy);
