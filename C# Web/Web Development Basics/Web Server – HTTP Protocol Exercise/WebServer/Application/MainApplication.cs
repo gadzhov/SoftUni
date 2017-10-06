@@ -15,6 +15,8 @@
             appRouteConfig.AddRoute("/add", new PostRequestHandler(httpContext => new AddController().AddPost(httpContext.FormData["name"], httpContext.FormData["price"])));
             appRouteConfig.AddRoute("/search", new GetRequestHandler(httpContext => new SearchController().SearchGet()));
             appRouteConfig.AddRoute("/search", new PostRequestHandler(httpContext => new SearchController().SearchPost(httpContext.FormData["name"])));
+            appRouteConfig.AddRoute("/calculator", new GetRequestHandler(httpContext => new CalculatorController().CalculatorGet()));
+            appRouteConfig.AddRoute("/calculator", new PostRequestHandler(httpContext => new CalculatorController().CalculatorPost(httpContext.FormData["numberOne"], httpContext.FormData["symbol"], httpContext.FormData["numberTwo"])));
         }
     }
 }
