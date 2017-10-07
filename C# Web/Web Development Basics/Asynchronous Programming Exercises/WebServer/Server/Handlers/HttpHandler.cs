@@ -1,11 +1,10 @@
 ﻿namespace WebServer.Server.Handlers
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Exceptions;
-    using global::WebServer.Application.Views;
-    using global::WebServer.Server.Enums;
-    using global::WebServer.Server.Http.Response;
+    using Server.Http.Response;
     using Handlers.Contracts;
     using Http.Contracts;
     using Routing.Contracts;
@@ -21,25 +20,32 @@
 
         public IHttpResponse Handle(IHttpContext httpContext)
         {
-            foreach (KeyValuePair<string, IRoutingContext> kvp in this.serverRouteConfig.Routes[httpContext.HttpRequest.RequestMethod])
+            try
             {
-                string pattern = kvp.Key;
-                Regex regex = new Regex(pattern);
-                Match match = regex.Match(httpContext.HttpRequest.Path);
-
-                if (!match.Success)
+                foreach (KeyValuePair<string, IRoutingContext> kvp in this.serverRouteConfig.Routes[httpContext.HttpRequest.RequestMethod])
                 {
-                    continue;
+                    string pattern = kvp.Key;
+                    Regex regex = new Regex(pattern);
+                    Match match = regex.Match(httpContext.HttpRequest.Path);
+
+                    if (!match.Success)
+                    {
+                        continue;
+                    }
+
+                    foreach (string parameter in kvp.Value.Parameters)
+                    {
+                        httpContext.HttpRequest.AddUrlParameters(parameter, match.Groups[parameter].Value);
+                    }
+                    return kvp.Value.RequestHandler.Handle(httpContext);
                 }
 
-                foreach (string parameter in kvp.Value.Parameters)
-                {
-                    httpContext.HttpRequest.AddUrlParameters(parameter, match.Groups[parameter].Value);
-                }
-                return kvp.Value.RequestHandler.Handle(httpContext);
+                throw new BadRequestException("Can't handle response!");
             }
-
-            throw new BadRequestException("Can't handle response!");
+            catch (Exception e)
+            {
+                return new InternalServerErrorResponse(e);
+            }
         }
     }
 }

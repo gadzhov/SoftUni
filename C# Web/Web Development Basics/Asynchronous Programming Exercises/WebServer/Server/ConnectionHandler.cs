@@ -30,8 +30,11 @@
 
             await this.client.SendAsync(toBytes, SocketFlags.None);
 
+            Console.WriteLine("---REQUEST---");
             Console.WriteLine(request);
+            Console.WriteLine("---RESPONSE---");
             Console.WriteLine(httpResponse.Response);
+            Console.WriteLine();
 
             this.client.Shutdown(SocketShutdown.Both);
         }
@@ -49,7 +52,7 @@
                 if (numBytesRead < 1023) break;
             }
 
-            return request;
+            return request.Trim();
         }
     }
 }

@@ -9,6 +9,10 @@
 
         HttpHeaderCollection HeaderCollection { get; }
 
+        HttpCookieCollection CookieCollection { get; }
+
+        HttpSession HttpSession { get; set; }
+
         string Path { get; }
 
         Dictionary<string, string> QueryParameter { get; }

@@ -13,6 +13,7 @@
         public HttpRequest(string requestString)
         {
             this.HeaderCollection = new HttpHeaderCollection();
+            this.CookieCollection = new HttpCookieCollection();
             this.UrlParameters = new Dictionary<string, string>();
             this.QueryParameter = new Dictionary<string, string>();
             this.FormData = new Dictionary<string, string>();
@@ -23,6 +24,10 @@
         public Dictionary<string, string> FormData { get; private set; }
 
         public HttpHeaderCollection HeaderCollection { get; private set; }
+
+        public HttpCookieCollection CookieCollection { get; private set; }
+
+        public HttpSession HttpSession { get; set; }
 
         public string Path { get; private set; }
 
@@ -60,6 +65,7 @@
                 .Split(new[] { '?', '#' }, StringSplitOptions.RemoveEmptyEntries)
                 .First();
             this.ParseHeaders(requestLines);
+            this.ParseCookies();
             this.ParseParameters();
 
             if (this.RequestMethod == HttpRequestMethod.POST)
@@ -129,6 +135,60 @@
             Enum.TryParse(toUpper, out HttpRequestMethod httpRequestMethod);
 
             return httpRequestMethod;
+        }
+
+        private void ParseCookies()
+        {
+            if (this.HeaderCollection.ContainsKey("Cookie"))
+            {
+                ICollection<HttpHeader> cookiesList = this.HeaderCollection.GetHeader("Cookie");
+
+                foreach (HttpHeader header in cookiesList)
+                {
+                    string cookieString = header.Value;
+                    if (string.IsNullOrEmpty(cookieString))
+                    {
+                        return;
+                    }
+
+                    string[] cookies = cookieString.Split(new[] {';'}, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (!cookies.Any())
+                    {
+                        return;
+                    }
+
+                    foreach (string c in cookies)
+                    {
+                        if (!c.Contains("="))
+                        {
+                            continue;
+                        }
+                        string[] cookieValuePair = c.Split(new[] {'='}, StringSplitOptions.RemoveEmptyEntries);
+
+                        if (cookieValuePair.Length == 2)
+                        {
+                            string key = cookieValuePair[0];
+                            string value = cookieValuePair[1];
+
+                            HttpCookie cookie = new HttpCookie(key, value, false);
+
+                            this.CookieCollection.Add(cookie);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SetSession(Dictionary<string, HttpSession> session)
+        {
+            if (this.CookieCollection.ContainsKey("sessionId"))
+            {
+                var sessionCookie = this.CookieCollection.Get("sessionId");
+                string sessionId = sessionCookie.Value;
+                if (session.ContainsKey(sessionId))
+                    this.HttpSession = session[sessionId];
+            }
         }
     }
 }
