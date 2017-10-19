@@ -1,0 +1,31 @@
+﻿<main class="col-4 ml-auto mr-auto text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h1 class="display-3">Login</h1>
+                </div>
+                <br />
+                <div class="alert alert-danger" role="alert" style="display: {{{alert-display}}}">
+                    <strong>Oh snap!</strong> {{{alert-message}}}
+                </div>
+                <form method="post">
+
+                    <div class="form-group row">
+                        <label class="sr-only">Email</label>
+                        <input class="form-control" name="email" placeholder="somebody@example.com" required="true"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="sr-only">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password"  required="true"/>
+                    </div>
+
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                           value="Login" />
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>

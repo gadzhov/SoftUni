@@ -1,0 +1,36 @@
+﻿<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="alert alert-success" role="alert" style="display: {{{bought-info}}}">
+                    <strong>Well done!</strong> You successfully bought {{{game-title}}}
+                </div>
+                <h1 class="display-3">{{{game-title}}}</h1>
+                <br />
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{{game-videoUrl}}}" frameborder="0"
+                        allowfullscreen></iframe>
+
+                <br />
+                <br />
+
+                <p>
+                    {{{game-description}}}
+                </p>
+
+                <p><strong>Price</strong> - {{{game-price}}}&euro;</p>
+                <p><strong>Size</strong> - {{{game-size}}}.5 GB</p>
+                <p><strong>Release Date</strong> - {{{game-release}}}</p>
+
+                <a class="btn btn-outline-primary" href="\">Back</a>
+                <a class="btn btn-warning" href="\admin\games\edit\{{{game-id}}}" style="display: {{{admin-set}}}">Edit</a>
+                <a class="btn btn-danger" href="\admin\games\delete\{{{game-id}}}" style="display: {{{admin-set}}}">Delete</a>
+                <a class="btn btn-primary" href="\games\info\{{{game-id}}}\add-to-shopping-card" style="display: {{{buy-button}}}" >Buy</a>
+
+                <br />
+                <br />
+
+            </div>
+        </div>
+    </div>
+</main>
