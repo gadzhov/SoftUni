@@ -184,7 +184,7 @@
                 Authorization auth = this.Request.Session.Get<Authorization>(SessionStore.CurrentUserAuthorization);
 
                 this.ViewData["buy-button"] = "inline";
-                if (auth == null || auth.OwnedGamesId.Contains(id))
+                if (auth == null || this.Request.Session.Get<List<GameViewModel>>(SessionStore.TempGames).Any() || auth.OwnedGamesId.Contains(id))
                 {
                     this.ViewData["buy-button"] = "none";
                 }
