@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CarDealer.Models.Logger>
+
+<h2>Logger</h2>
+
+<form method="get">
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <input class="form-control" type="search" name="search" placeholder="Username..." />
+        </div>
+        <input type="submit" value="Search Logs" class="btn btn-info" />
+        <div class="pull-right">
+            <a asp-action="clear" class="btn btn-warning">Clear All Logs</a>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <tr>
+        <th>User</th>
+        <th>Operation</th>
+        <th>Modified Table</th>
+        <th>Time</th>
+    </tr>
+    @foreach (Logger logger in Model)
+    {
+        <tr>
+            <td>@logger.User</td>
+            <td>@logger.Operation</td>
+            <td>@logger.ModifiedTable</td>
+            <td>@logger.Time</td>
+        </tr>
+    }
+</table>
+
+
+<div>Page @(ViewBag.CurrentPage + 1) of @ViewBag.PaginationSize</div>
+<ul class="pagination">
+    @for (int i = 0; i < ViewBag.PaginationSize; i++)
+    {
+        if (ViewBag.CurrentPage == i)
+        {
+            <li class="active"><a href="\logger\all\?page=@i">@(i + 1)</a></li>
+        }
+        else
+        {
+            <li><a href="\logger\all\?page=@i">@(i + 1)</a></li>
+        }
+    }
+</ul>

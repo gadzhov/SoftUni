@@ -1,0 +1,48 @@
+﻿@model CarDealer.Models.BindingModels.SaleBindingModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Add</h2>
+
+<h4>Sale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Customer" class="control-label" ></label>
+                <select asp-for="Customer" class ="form-control" asp-items="ViewBag.Customers" name="Customer" required>
+                    <option>Please select a customer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CarId" class="control-label" ></label>
+                <select asp-for="CarId" class ="form-control" asp-items="@(new SelectList(ViewBag.Cars,"Id","Car"))" name="CarId" required>
+                    <option>Please select a car</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <select asp-for="Discount" class="form-control" asp-items="ViewBag.Discounts" name="Discount" required>
+                    <option>Please select a discount</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

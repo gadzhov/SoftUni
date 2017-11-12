@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CarDealer.Models.Sale>
+
+<h2>All Sales</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>CarId</th>
+        <th>CustomerId</th>
+        @foreach (Sale sale in Model)
+        {
+            <tr>
+                <td>@sale.Id</td>
+                <td>@sale.CarId</td>
+                <td>@sale.CustomerId</td>
+            </tr>
+        }
+    </tr>
+</table>

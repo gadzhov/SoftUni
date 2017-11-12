@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CarDealer.Models.Supplier>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Index</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        <a asp-action="Add" class="btn btn-lg btn-primary">New Supplier</a>
+    </p>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsImporter)
+            </th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th>
+                    Actions
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @(item.IsImporter ? "Yes" : "No")
+                </td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

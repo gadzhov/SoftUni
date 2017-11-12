@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CarDealer.Models.Customer>
+@{
+    ViewData["Title"] = "All";
+}
+<h2>All</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsYoungDriver)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsYoungDriver)
+                </td>
+                <td><a asp-area="" asp-controller="customers" asp-action="edit" asp-route-id="@item.Id" />Edit</td>
+            </tr>
+        }
+    </tbody>
+</table>

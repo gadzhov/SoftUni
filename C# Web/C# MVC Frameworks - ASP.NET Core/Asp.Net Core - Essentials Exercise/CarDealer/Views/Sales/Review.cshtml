@@ -1,0 +1,47 @@
+﻿@model CarDealer.Models.ViewModels.SaleReviewViewModel
+
+<h2>Review Sale</h2>
+
+<form asp-action="Review" method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Customer" class="control-label"></label>
+        <input asp-for="Customer" class="form-control"  name="Customer" readonly/>
+    </div>
+
+    <div class="form-group">
+        <input type="hidden" value="@Model.CarId" name="CarId" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Car" class="control-label"></label>
+        <input asp-for="Car" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Discount" class="control-label"></label>
+        <input type="text" class="form-control" value="@Model.Discount @ViewBag.IsYoungDriver" readonly/>
+    </div>
+
+    <div class="form-group">
+        <input type="hidden" value="@Model.Discount" name="Discount"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CarPrice" class="control-label"></label>
+        <input asp-for="CarPrice" class="form-control" name="CarPrice" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FinalCarPrice" class="control-label"></label>
+        <input asp-for="FinalCarPrice" class="form-control" name="FinalCarPrice" readonly />
+    </div>
+
+    <div class="form-group">
+        <a asp-controller="sales" asp-action="add" class="btn btn-danger">Cancel</a>
+        <input type="submit" value="Finalize" class="btn btn-primary" />
+    </div>
+
+</form>

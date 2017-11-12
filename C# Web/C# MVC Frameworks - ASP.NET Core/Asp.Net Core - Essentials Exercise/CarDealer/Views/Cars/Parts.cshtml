@@ -1,0 +1,21 @@
+﻿@model CarDealer.Models.ViewModels.CarPartsViewModel
+@{
+    ViewData["Title"] = "Parts";
+}
+<h2>Parts</h2>
+<h3>@Model.Make @Model.Model @Model.TravelledDistance</h3>
+<br />
+
+    <table class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+       @foreach (CarDealer.Models.ViewModels.PartViewModel part in Model.Parts)
+       {
+           <tr>
+               <td>@part.Name</td>
+               <td>@part.Price</td>
+           </tr>
+       }
+    </table>

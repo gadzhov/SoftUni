@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CarDealer.Models.ViewModels.SaleDetailsView>
+
+<h2>Discounted Sales</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Car Make</th>
+        <th>Car Model</th>
+        <th>Customer Name</th>
+        <th>Discounted %</th>
+    </tr>
+
+    @foreach (var sale in Model)
+    {
+        <tr>
+            <td>@sale.Make</td>
+            <td>@sale.Model</td>
+            <td>@sale.CustomerName</td>
+            <td>@sale.Discount</td>
+        </tr>
+    }
+
+</table>
