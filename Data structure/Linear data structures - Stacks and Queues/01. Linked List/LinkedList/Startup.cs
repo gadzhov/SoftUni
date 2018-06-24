@@ -1,4 +1,4 @@
-﻿public class Launcher
+﻿public class Startup
 {
     public static void Main()
     {
