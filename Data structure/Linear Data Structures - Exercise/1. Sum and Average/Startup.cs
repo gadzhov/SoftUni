@@ -1,78 +1,81 @@
 ﻿using System;
 using System.Linq;
 
-public class Startup
+namespace _1.Sum_and_Average
 {
-    public static void Main()
+    public class Startup
     {
-        var list = new CustomList();
-        Console.ReadLine()
-            .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse)
-            .ToList()
-            .ForEach(x => list.Add(x));
-
-        Console.WriteLine($"Sum={list.Sum()}; Average={list.Average():F2}");
-    }
-
-    public class CustomList
-    {
-        private readonly int initialCapacity = 2;
-        private int[] data;
-
-        public CustomList()
+        public static void Main()
         {
-            this.data = new int[this.initialCapacity];
+            var list = new CustomList();
+            Console.ReadLine()
+                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList()
+                .ForEach(x => list.Add(x));
+
+            Console.WriteLine($"Sum={list.Sum()}; Average={list.Average():F2}");
         }
 
-        public int Count { get; set; }
-
-        public void Add(int element)
+        public class CustomList
         {
-            if (this.Count == data.Length)
+            private readonly int initialCapacity = 2;
+            private int[] data;
+
+            public CustomList()
             {
-                this.Resize();
+                this.data = new int[this.initialCapacity];
             }
 
-            this.data[Count] = element;
-            this.Count++;
-        }
+            public int Count { get; set; }
 
-        public int Sum()
-        {
-            var result = 0;
-
-            for (int i = 0; i < Count; i++)
+            public void Add(int element)
             {
-                result += this.data[i];
+                if (this.Count == data.Length)
+                {
+                    this.Resize();
+                }
+
+                this.data[Count] = element;
+                this.Count++;
             }
 
-            return result;
-        }
-
-        public double Average()
-        {
-            var result = 0.0;
-
-            if (this.Count > 0)
+            public int Sum()
             {
-                result = (double)this.Sum() / (double)this.Count;
+                var result = 0;
+
+                for (int i = 0; i < Count; i++)
+                {
+                    result += this.data[i];
+                }
+
+                return result;
             }
 
-            return result;
-        }
-
-        #region helpers
-        private void Resize()
-        {
-            var newArray = new int[this.data.Length * 2];
-            for (int i = 0; i < this.Count; i++)
+            public double Average()
             {
-                newArray[i] = this.data[i];
+                var result = 0.0;
+
+                if (this.Count > 0)
+                {
+                    result = (double)this.Sum() / (double)this.Count;
+                }
+
+                return result;
             }
 
-            this.data = newArray;
+            #region helpers
+            private void Resize()
+            {
+                var newArray = new int[this.data.Length * 2];
+                for (int i = 0; i < this.Count; i++)
+                {
+                    newArray[i] = this.data[i];
+                }
+
+                this.data = newArray;
+            }
+            #endregion
         }
-        #endregion
     }
 }
