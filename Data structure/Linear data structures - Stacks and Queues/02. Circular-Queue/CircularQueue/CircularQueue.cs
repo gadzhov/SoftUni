@@ -3,44 +3,71 @@
 public class CircularQueue<T>
 {
     private const int DefaultCapacity = 4;
+    private T[] _elements;
+    private int _startIndex;
+    private int _endIndex;
 
     public int Count { get; private set; }
 
     public CircularQueue(int capacity = DefaultCapacity)
     {
-        // TODO
-        throw new NotImplementedException();
+        _elements = new T[capacity];
     }
 
     public void Enqueue(T element)
     {
-        // TODO
-        throw new NotImplementedException();
+        if (this.Count >= _elements.Length)
+        {
+            this.Resize();
+        }
+
+        _elements[_endIndex] = element;
+        _endIndex = (_endIndex + 1) % _elements.Length;
+        Count++;
     }
 
     private void Resize()
     {
-        // TODO
-        throw new NotImplementedException();
+        var newArray = new T[2 * _elements.Length];
+        this.CopyAllElements(newArray);
+        _elements = newArray;
+        _startIndex = 0;
+        _endIndex = this.Count;
     }
 
     private void CopyAllElements(T[] newArray)
     {
-        // TODO
-        throw new NotImplementedException();
+        var sourceIndex = _startIndex;
+        var destinationIndex = 0;
+        for (int i = 0; i < this.Count; i++)
+        {
+            newArray[destinationIndex] = _elements[sourceIndex];
+            sourceIndex = (sourceIndex + 1) % _elements.Length;
+            destinationIndex++;
+        }
     }
 
     // Should throw InvalidOperationException if the queue is empty
     public T Dequeue()
     {
-        // TODO
-        throw new NotImplementedException();
+        if (this.Count == 0)
+        {
+            throw new InvalidOperationException("The queue is empty.");
+        }
+
+        var element = _elements[_startIndex];
+        _startIndex = (_startIndex + 1) % _elements.Length;
+        this.Count--;
+
+        return element;
     }
 
     public T[] ToArray()
     {
-        // TODO
-        throw new NotImplementedException();
+        var result = new T[this.Count];
+        CopyAllElements(result);
+
+        return result;
     }
 }
 
