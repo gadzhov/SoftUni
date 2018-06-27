@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Longest Subsequence", "3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Remove Odd Occurrences", "4. Remove Odd Occurrences\4. Remove Odd Occurrences.csproj", "{643EC943-2A27-4C45-86AB-8125209BB805}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Count of Occurrences", "5. Count of Occurrences\5. Count of Occurrences.csproj", "{D536E3D7-4205-45AE-96FE-0B28404ACBDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{643EC943-2A27-4C45-86AB-8125209BB805}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{643EC943-2A27-4C45-86AB-8125209BB805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{643EC943-2A27-4C45-86AB-8125209BB805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D536E3D7-4205-45AE-96FE-0B28404ACBDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D536E3D7-4205-45AE-96FE-0B28404ACBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D536E3D7-4205-45AE-96FE-0B28404ACBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D536E3D7-4205-45AE-96FE-0B28404ACBDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
