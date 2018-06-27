@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Sort Words", "2. Sort Wo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Longest Subsequence", "3. Longest Subsequence\3. Longest Subsequence.csproj", "{5AB06120-7F26-4AB6-A03D-013EA1CBF650}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Remove Odd Occurrences", "4. Remove Odd Occurrences\4. Remove Odd Occurrences.csproj", "{643EC943-2A27-4C45-86AB-8125209BB805}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5AB06120-7F26-4AB6-A03D-013EA1CBF650}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AB06120-7F26-4AB6-A03D-013EA1CBF650}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AB06120-7F26-4AB6-A03D-013EA1CBF650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643EC943-2A27-4C45-86AB-8125209BB805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643EC943-2A27-4C45-86AB-8125209BB805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643EC943-2A27-4C45-86AB-8125209BB805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643EC943-2A27-4C45-86AB-8125209BB805}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
