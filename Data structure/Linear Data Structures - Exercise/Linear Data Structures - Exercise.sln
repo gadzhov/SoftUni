@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. Implement ReversedList",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7. Distance in Labyrinth", "7. Distance in Labyrinth\7. Distance in Labyrinth.csproj", "{7C207146-C03D-4D22-8D7E-263247458CC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8. Doubly Linked List", "8. Doubly Linked List\8. Doubly Linked List.csproj", "{3D9DE072-16D2-4EDF-B5D9-F071250FFD2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8. Doubly Linked List.Tests", "8. Doubly Linked List.Tests\8. Doubly Linked List.Tests.csproj", "{AD0771A2-ADAE-4537-972E-AFD83A889EF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{7C207146-C03D-4D22-8D7E-263247458CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C207146-C03D-4D22-8D7E-263247458CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C207146-C03D-4D22-8D7E-263247458CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D9DE072-16D2-4EDF-B5D9-F071250FFD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D9DE072-16D2-4EDF-B5D9-F071250FFD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D9DE072-16D2-4EDF-B5D9-F071250FFD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D9DE072-16D2-4EDF-B5D9-F071250FFD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD0771A2-ADAE-4537-972E-AFD83A889EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD0771A2-ADAE-4537-972E-AFD83A889EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD0771A2-ADAE-4537-972E-AFD83A889EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD0771A2-ADAE-4537-972E-AFD83A889EF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
