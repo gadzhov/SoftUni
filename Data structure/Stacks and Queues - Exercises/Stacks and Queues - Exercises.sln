@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Reverse Numbers with a Stack", "1. Reverse Numbers with a Stack\1. Reverse Numbers with a Stack.csproj", "{7AE36010-C04D-45C0-8767-12C220F8026C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Calculate Sequence with a Queue", "2. Calculate Sequence with a Queue\2. Calculate Sequence with a Queue.csproj", "{77B15EE5-5EA9-4C1D-9F04-FDE627A9B39F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7AE36010-C04D-45C0-8767-12C220F8026C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AE36010-C04D-45C0-8767-12C220F8026C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AE36010-C04D-45C0-8767-12C220F8026C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B15EE5-5EA9-4C1D-9F04-FDE627A9B39F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B15EE5-5EA9-4C1D-9F04-FDE627A9B39F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B15EE5-5EA9-4C1D-9F04-FDE627A9B39F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B15EE5-5EA9-4C1D-9F04-FDE627A9B39F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

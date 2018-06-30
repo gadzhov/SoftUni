@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace _1.Reverse_Numbers_with_a_Stack
@@ -8,12 +8,12 @@ namespace _1.Reverse_Numbers_with_a_Stack
     {
         public static void Main()
         {
-            var result = new Stack(Console.ReadLine()
+            var result = new Stack<int>(Console.ReadLine()
                 .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToList());
 
-            Console.WriteLine(string.Join(" ", result.ToArray()));
+            Console.WriteLine(string.Join(" ", result));
         }
     }
 }
