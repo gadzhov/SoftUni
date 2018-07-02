@@ -29,7 +29,7 @@ public class LinkedStack<T>
     public T[] ToArray()
     {
         var newArray = new T[this.Count];
-        var current = this.firstNode.NextNode;
+        var current = this.firstNode;
         var index = 0;
         while (current != null)
         {

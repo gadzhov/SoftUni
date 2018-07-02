@@ -1,4 +1,6 @@
-﻿public class Startup
+﻿using System;
+
+public class Startup
 {
     public static void Main()
     {
