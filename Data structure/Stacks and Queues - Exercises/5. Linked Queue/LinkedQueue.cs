@@ -9,9 +9,17 @@ public class LinkedQueue<T>
 
     public void Enqueue(T element)
     {
+        var newNode = new QueueNode<T>(element);
+
         if (this.Count == 0)
         {
-            this.head = this.tail = new QueueNode<T>(element);
+            this.head = this.tail = new QueueNode<T>(newNode.Value);
+        }
+        else
+        {
+            this.tail.NextNode = newNode;
+            newNode.PrevNode = this.tail;
+            this.tail = newNode;
         }
 
         this.Count++;
@@ -19,12 +27,31 @@ public class LinkedQueue<T>
 
     public T Dequeue()
     {
-        throw new NotImplementedException();
+        if (this.Count == 0)
+        {
+            throw new InvalidOperationException("Empty queue.");
+        }
+
+        var element = this.head.Value;
+        this.head = this.head.NextNode;
+        this.Count--;
+
+        return element;
     }
 
     public T[] ToArray()
     {
-        throw new NotImplementedException();
+        var subArray = new T[this.Count];
+
+        var current = this.head;
+        var index = 0;
+        while (current != null)
+        {
+            subArray[index++] = current.Value;
+            current = current.NextNode;
+        }
+
+        return subArray;
     }
 
     private class QueueNode<T>
@@ -36,8 +63,8 @@ public class LinkedQueue<T>
 
         public T Value { get; private set; }
 
-        public QueueNode<T> NextNode { get; private set; }
+        public QueueNode<T> NextNode { get; set; }
 
-        public QueueNode<T> PrevNode { get; private set; }
+        public QueueNode<T> PrevNode { get; set; }
     }
 }
