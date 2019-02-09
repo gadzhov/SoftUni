@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinarySearchTree.cs" />
     <Compile Include="BinaryTree.cs" />
     <Compile Include="PlayWithTrees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
